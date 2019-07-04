@@ -16,8 +16,8 @@
         }
     ],
     "require": {
-        "laravel/framework": "5.1.*||5.2.*||5.3.*||5.4.*||5.5.*",
-        "nodes/core": "^1.0",
+        "laravel/framework": "5.1.*||5.2.*||5.3.*||5.4.*||5.5.*||5.6.*||5.7.*||5.8.*",
+        "nodes/core": "1.1.*",
         "guzzlehttp/guzzle": "6.x"
     },
     "require-dev" : {
@@ -32,5 +32,16 @@
         "files": [
             "src/Support/Helpers/NStack.php"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nodes\\NStack\\ServiceProvider",
+                "Nodes\\ServiceProvider"
+            ],
+            "aliases": {
+                "NStack": "Nodes\\Backend\\Support\\Facades\\NStack"
+            }
+        }
     }
 }

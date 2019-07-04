@@ -22,7 +22,7 @@ To install this package you will need:
 
 You must then modify your `composer.json` file and run `composer update` to include the latest version of the package in your project.
 
-```
+```json
 "require": {
     "nodes/nstack": "1.0.*",
 }
@@ -30,38 +30,39 @@ You must then modify your `composer.json` file and run `composer update` to incl
 
 Or you can run the composer require command from your terminal.
 
-```
+```bash
 composer require nodes/nstack
 ```
 ## 🔧 Setup
+> In Laravel 5.5 or above, service providers and aliases are [automatically registered](https://laravel.com/docs/5.5/packages#package-discovery). If you're using Laravel 5.5 or above, skip ahead directly to *Publish config files*.
 
 Setup service providers in config/app.php
 
-```
+```php
 Nodes\NStack\ServiceProvider::class,
 Nodes\ServiceProvider::class,
 ```
 
 Setup alias in config/app.php
 
-```
-'NStack'        => Nodes\Backend\Support\Facades\NStack::class,
+```php
+'NStack' => Nodes\Backend\Support\Facades\NStack::class,
 ```
 
 Publish config file
-```
+```bash
 php artisan vendor:publish && php artisan vendor:publish --provider="Nodes\NStack\ServiceProvider" --force
 ```
 
 Dump 
-```
+```bash
 composer dump-autoload
 ```
 
 ## ⚙ Usage
 
 Global function
-```
+```php
 nstack()
 $countries = nstack()->countries()
 nstack()->pushLog('fcm', 'my-app', 'userNotification', true, ['request here'], ['response here'], 'Hi!', 1);
